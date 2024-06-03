@@ -1,43 +1,43 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import java.awt.*;
 
 public class TicTacToeCellTests {
 
-    private TicTacToeCell cell;
-
-    @BeforeEach
-    public void setUp() {
-        cell = new TicTacToeCell(0, 0, 0);
-    }
-
     @Test
-    public void testInitialValues() {
+    void testTicTacToeCellInitialState() {
+        TicTacToeCell cell = new TicTacToeCell(0, 0, 0);
         assertEquals(' ', cell.getMarker());
-        assertEquals(0, cell.getNum());
         assertEquals(0, cell.getRow());
         assertEquals(0, cell.getCol());
+        assertEquals(0, cell.getNum());
+        assertEquals(" ", cell.getText());
     }
 
     @Test
-    public void testSetMarker() {
+    void testTicTacToeCellSetMarker() {
+        TicTacToeCell cell = new TicTacToeCell(0, 0, 0);
         cell.setMarker("X");
         assertEquals('X', cell.getMarker());
+        assertEquals("X", cell.getText());
         assertFalse(cell.isEnabled());
     }
 
     @Test
-    public void testGetRow() {
-        assertEquals(0, cell.getRow());
+    void testTicTacToeCellSetMarkerO() {
+        TicTacToeCell cell = new TicTacToeCell(1, 1, 1);
+        cell.setMarker("O");
+        assertEquals('O', cell.getMarker());
+        assertEquals("O", cell.getText());
+        assertFalse(cell.isEnabled());
     }
 
     @Test
-    public void testGetCol() {
-        assertEquals(0, cell.getCol());
-    }
-
-    @Test
-    public void testGetNum() {
-        assertEquals(0, cell.getNum());
+    void testTicTacToeCellGetters() {
+        TicTacToeCell cell = new TicTacToeCell(2, 2, 1);
+        assertEquals(2, cell.getNum());
+        assertEquals(1, cell.getRow());
+        assertEquals(2, cell.getCol());
     }
 }
